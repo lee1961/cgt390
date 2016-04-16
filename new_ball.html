@@ -15,6 +15,7 @@
         var renderer;
         var sphere,sphere_geometry,sphere_material;
         var plane,plane_geometry,plane_material;
+        var camera_controls;
 
         init();
         animate();
@@ -60,14 +61,15 @@
 
         var button = document.getElementById("button"); // getting a button!
 
-       
+       //adding some  camera controls
+       camera_controls = new THREE.OrbitControls( camera, renderer.domElement );
 
     }
 
     function animate() {
         requestAnimationFrame(animate);
         //sphere.rotation.x += 0.1;
-
+        camera_controls.update();
         render();
     }
     function render() {
