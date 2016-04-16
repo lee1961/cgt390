@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>My first Three.js app</title>
+    <style>
+        body { margin: 0; }
+        canvas { width: 50%; height: 50% }
+    </style>
+</head>
+<body>
+    <script src="js/three.min.js"></script>
+    <script>
+        var camera;
+        var scene;
+        var renderer;
+        var sphere,sphere_geometry,sphere_material;
+        var plane,plane_geometry,plane_material;
+
+        init();
+        animate();
+        function init() {
+        //setting up the camera
+        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera.position.y = 500;
+        camera.position.z = 500;
+        scene = new THREE.Scene();
+
+        var light = new THREE.SpotLight();
+        light.position.set( 1000, 1000, 1000 );
+      //light.position.set( 1000, 1000, 1000 );
+      light.target.position.set( 0, 0, 0 );
+      light.castShadow = true;
+      scene.add( light );
+
+      sphere_geometry = new THREE.SphereGeometry( 50, 16, 12 );
+      sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 5, opacity: 1, wireframe: false } );
+
+      sphere = new THREE.Mesh(sphere_geometry,sphere_material);
+      sphere.position.set(150,300,150);
+      scene.add(sphere);
+      plane_geometry = new THREE.PlaneGeometry( 500, 500, 8, 8 );
+      plane_material = new THREE.MeshLambertMaterial( { color: 0xFFFFFF, wireframe: true } );
+      plane = new THREE.Mesh(plane_geometry,plane_material);
+      plane.rotation.x = -Math.PI/2;
+      plane.position.set(0,0,0);
+        //plane.castShadow = false;
+
+        scene.add(plane);
+
+        camera.lookAt(plane.position);
+        //setting up the renderer
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setClearColor( 0xFFFFFF );
+        //renderer.shadowMapEnabled = true;
+        document.body.appendChild( renderer.domElement );
+
+        var button = document.getElementById("button"); // getting a button!
+
+       
+
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        //sphere.rotation.x += 0.1;
+
+        render();
+    }
+    function render() {
+        renderer.render(scene,camera);
+    }
+
+
+</script>
+</body>
+<button id="button" onclick="myFunction()"> but </button>
+<input type="range" name="slider" min="40" max="150" step="10" value="90" id="slider">
+<script type="text/javascript">
+// this is the place where you declare all the buttons all that so that you can access any variable!
+     button.onclick = function() {
+            sphere.rotation.x += 0.1;
+        }
+
+</script>
+</html>
