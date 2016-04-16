@@ -17,6 +17,8 @@
         var plane,plane_geometry,plane_material;
         var camera_controls;
 
+        var velocity = -1;
+
         init();
         animate();
         function init() {
@@ -73,7 +75,11 @@
         render();
     }
     function render() {
-        renderer.render(scene,camera);
+          sphere.position.y += velocity;
+
+          
+
+          renderer.render(scene,camera);  
     }
 
 
