@@ -163,6 +163,7 @@
 	var velocity = -1;
 	var ball_gravity = 9.8;
 	var gravity_choice;
+	var height = undefined;
 
 	init();
 	animate();
@@ -175,6 +176,7 @@
 				scene = new THREE.Scene();
 
 				var lightAmb = new THREE.AmbientLight(0x777777);
+				lightAmb.intensity = 1;
 				scene.add(lightAmb);
 				
 				var light = new THREE.SpotLight();
@@ -189,14 +191,15 @@
 				sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 5, opacity: 1, wireframe: false } );
 
 				sphere = new THREE.Mesh(sphere_geometry,sphere_material);
+				height = 100;
 				// sphere.scale.set(0.1,0.1,0.1); // setting the size of the ball
-				sphere.position.set(0,50,0);
+				sphere.position.set(0,height,0);
 				sphere.castShadow = true;
 				gravity_choice = document.getElementById('gravitySelect');
 
 
 				//SETTING UP THE initial attributes to calculate acceleration of a ball when it drops!
-				sphere.H0 = 50; // the default height!
+				sphere.H0 = height; // the default height!
 				sphere.V0 = 0;
 				sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
 				sphere.HF = 0;
@@ -223,7 +226,11 @@
 				var floorTexture = new THREE.TextureLoader().load( 'images/grass.jpg' );
 				floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 				floorTexture.repeat.set( 10, 10 );
-				var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide } );
+				var normal_map = new THREE.TextureLoader().load( 'images/normal_map.jpg' );
+				var diffuse_map = new THREE.TextureLoader().load( 'images/diffuse_map.jpg' );
+				var bump_map = new THREE.TextureLoader().load('images/bump_map.jpg');
+				//var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide} );
+				var floorMaterial = new THREE.MeshPhongMaterial( { map: diffuse_map, normalMap: normal_map, side: THREE.DoubleSide} );
 				var floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
 				plane = new THREE.Mesh(floorGeometry, floorMaterial);
 				plane.receiveShadow = true;
@@ -248,6 +255,7 @@
 				camera_controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 				//drawing text on canvas
+				/*
 				var canvas1 = document.createElement('canvas');
 				canvas1.width = 1024;
 				canvas1.height  = 1024;
@@ -266,27 +274,32 @@
 				mesh1.position.set(400,-400,0);
 				mesh1.visibile = false;
 				scene.add( mesh1 );
+				*/
 
 				/*
 					adding shadows
-				*/
-				
-				renderer.shadowMapEnabled = true; 
-				var spotlight = new THREE.SpotLight( 0xFFFFFF );
-				spotlight.intensity = 0.3;
+					*/
+
+					renderer.shadowMapEnabled = true; 
+					var spotlight = new THREE.SpotLight( 0xFFFFFF );
+					spotlight.intensity = 0.5;
 				//spotlight.position.set(1000,1000,1000);
 				spotlight.castShadow = true;
-				spotlight.position.set(30,100,30);
+				spotlight.position.set(30,200,30);
 				spotlight.shadowCameraNear = 0.5;
 				spotlight.decay = 2;
+
+				//spotlight.shadow.mapSize.width = 10000;
+				//spotlight.shadow.mapSize.height = 10;
 				//spotlight.shadowCameraVisible = true;
 				var helper = new THREE.CameraHelper(spotlight.shadow.camera);
 				//scene.add(helper);
 			//	spotlight.shadowDarkness = 0.95;
 			//	spotlight.intensity = 2;
 				// must enable shadow casting ability for the light
-	
+
 				scene.add(spotlight);
+				//scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
 				
 				
 				
@@ -311,7 +324,7 @@
 
 			function animate() {
 				requestAnimationFrame(animate);
-				//sphere.rotation.x += 0.1;
+				sphere.rotation.x += 0.1;
 				// console.log(sphere.radius);
 				camera_controls.update();
 				if(pause_flag == true) {
@@ -340,6 +353,8 @@
 
 			function updatePosition() {
 				//console.log("position is " + sphere.position.y);
+				sphere.position.y += 0.5;
+				sphere.rotation.x += 0.5;
 				var t = sceneTime - sphere.bouncing_time;
 				var h = sphere.position.y;
 				h = sphere.H0 + (sphere.V0 * t) - (0.5 * ball_gravity * t * t);
@@ -376,7 +391,7 @@
 				var selected_value = this.options[this.selectedIndex].text;
 				if(selected_value == "Moon") {
 					ball_gravity = 1/6 * ball_gravity;
-					sphere.H0 = 50; // the default height!
+					sphere.H0 = height; // the default height!
 					sphere.V0 = 0;
 					sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
 					sphere.HF = 0;
@@ -386,7 +401,7 @@
 
 				} else if (selected_value == "Earth") {
 					ball_gravity = 9.8;
-					sphere.H0 = 50; // the default height!
+					sphere.H0 = height; // the default height!
 					sphere.V0 = 0;
 					sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
 					sphere.HF = 0;
