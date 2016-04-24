@@ -185,10 +185,12 @@
 				light.target.position.set( 0, 0, 0 );
 				light.castShadow = true;
 				scene.add( light );
-				
+				var ball_normal = new THREE.TextureLoader().load( 'images/ball_normal.jpg' );
+				var ball_diffuse = new THREE.TextureLoader().load( 'images/ball_diffuse.jpg' );
 
 				sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
-				sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 5, opacity: 1, wireframe: false } );
+				//sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 3, opacity: 1, wireframe: false } );
+				sphere_material  = new THREE.MeshPhongMaterial( { map: ball_diffuse, normalMap: ball_normal} );
 
 				sphere = new THREE.Mesh(sphere_geometry,sphere_material);
 				height = 100;
@@ -224,8 +226,8 @@
 				//var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
 				//var texture = new THREE.TextureLoader().load( "textures/water.jpg" );
 				var floorTexture = new THREE.TextureLoader().load( 'images/grass.jpg' );
-				floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
-				floorTexture.repeat.set( 10, 10 );
+				//floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+				//floorTexture.repeat.set( 10, 10 );
 				var normal_map = new THREE.TextureLoader().load( 'images/normal_map.jpg' );
 				var diffuse_map = new THREE.TextureLoader().load( 'images/diffuse_map.jpg' );
 				var bump_map = new THREE.TextureLoader().load('images/bump_map.jpg');
@@ -324,7 +326,7 @@
 
 			function animate() {
 				requestAnimationFrame(animate);
-				sphere.rotation.x += 0.1;
+				//sphere.rotation.x += 0.1;
 				// console.log(sphere.radius);
 				camera_controls.update();
 				if(pause_flag == true) {
@@ -353,8 +355,11 @@
 
 			function updatePosition() {
 				//console.log("position is " + sphere.position.y);
-				sphere.position.y += 0.5;
-				sphere.rotation.x += 0.5;
+				//sphere.position.z += 0.1;
+				sphere.rotation.x += 0.05;
+				if( h <= 5) {
+					sphere.rotation.x = 0;
+				}
 				var t = sceneTime - sphere.bouncing_time;
 				var h = sphere.position.y;
 				h = sphere.H0 + (sphere.V0 * t) - (0.5 * ball_gravity * t * t);
@@ -423,7 +428,7 @@
 	<button id="button" onclick="myFunction()"> change gravity </button>
 	<button id="button_pause" > pause </button>
 	<br>
-	<input type="range" name="slider" min="0.5" max="1" step="0.1" value="1" id="slider" >air resistance</input>
+	<input type="range" name="slider" min="0" max="1" step="0.1" value="0" id="slider" >air resistance</input>
 	<br>
 	<input type="range" name="slider_size" min="0.1" max="1" step="0.1" value="0.1" id="slider_size"> size of the ball</input>
 	<script type="text/javascript">
@@ -445,12 +450,14 @@
 
 	}
 	slider.onchange = function() {   
-	sphere.H0 = 50; // the default height!
+	sphere.H0 = height; // the default height!
 	sphere.V0 = 0;
 	sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
 	sphere.HF = 0;
 	sphere.bouncing_time = 0;
-	sphere.bounciness = this.value;
+	this.value = this.value;
+	sphere.bounciness = 1 - this.value;
+	//console.log("the sphere bounciness is " + sphere.bounciness);
 	sceneTime = 0;
 	// scene.remove(sphere);
 }
