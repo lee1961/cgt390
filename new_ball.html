@@ -176,13 +176,14 @@
 
 				var lightAmb = new THREE.AmbientLight(0x777777);
 				scene.add(lightAmb);
-
+				
 				var light = new THREE.SpotLight();
 				light.position.set( 1000, 1000, 1000 );
 				//light.position.set( 1000, 1000, 1000 );
 				light.target.position.set( 0, 0, 0 );
 				light.castShadow = true;
 				scene.add( light );
+				
 
 				sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
 				sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 5, opacity: 1, wireframe: false } );
@@ -190,6 +191,7 @@
 				sphere = new THREE.Mesh(sphere_geometry,sphere_material);
 				// sphere.scale.set(0.1,0.1,0.1); // setting the size of the ball
 				sphere.position.set(0,50,0);
+				sphere.castShadow = true;
 				gravity_choice = document.getElementById('gravitySelect');
 
 
@@ -221,9 +223,10 @@
 				var floorTexture = new THREE.TextureLoader().load( 'images/grass.jpg' );
 				floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 				floorTexture.repeat.set( 10, 10 );
-				var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
+				var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide } );
 				var floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
 				plane = new THREE.Mesh(floorGeometry, floorMaterial);
+				plane.receiveShadow = true;
 				plane.position.y = -0.5;
 				plane.rotation.x = Math.PI / 2;
 
@@ -263,6 +266,33 @@
 				mesh1.position.set(400,-400,0);
 				mesh1.visibile = false;
 				scene.add( mesh1 );
+
+				/*
+					adding shadows
+				*/
+				
+				renderer.shadowMapEnabled = true; 
+				var spotlight = new THREE.SpotLight( 0xFFFFFF );
+				spotlight.intensity = 0.3;
+				//spotlight.position.set(1000,1000,1000);
+				spotlight.castShadow = true;
+				spotlight.position.set(30,100,30);
+				spotlight.shadowCameraNear = 0.5;
+				spotlight.decay = 2;
+				//spotlight.shadowCameraVisible = true;
+				var helper = new THREE.CameraHelper(spotlight.shadow.camera);
+				//scene.add(helper);
+			//	spotlight.shadowDarkness = 0.95;
+			//	spotlight.intensity = 2;
+				// must enable shadow casting ability for the light
+	
+				scene.add(spotlight);
+				
+				
+				
+
+
+
 
 
 
