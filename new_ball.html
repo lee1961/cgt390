@@ -1,61 +1,61 @@
 <html>
-<head>
-	<title>My first Three.js app</title>
-	<style>
-		body { margin: 0; }
-		canvas { width: 100%; height: 50% }
-		.container {
+	<head>
+		<title>My first Three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 50% }
+			.container {
 
-			width: 200px;
-			height: 200px;
+				width: 200px;
+				height: 200px;
 
-		}
-	</style>
-</head>
-<h1> Newton's Free Fall Concept</h1>
-<body>
+			}
+		</style>
+	</head>
+	<h1> Newton's Free Fall Concept</h1>
+	<body>
 
-	<div style="width: 200px;height: 200px; float: left;"> <canvas id="graph_1" width="1" height="1"></canvas> Velocity time graph</div>
+		<div style="width: 200px;height: 200px; float: left;"> <canvas id="graph_1" width="1" height="1"></canvas> Velocity time graph</div>
 
-	<div style="margin-left: 220px;width: 200px;height: 200px; float:right"> <canvas id="graph_2" width="1" height="1"> </canvas> Acceleration Time graph </div>
-	<div style="clear: both;"></div>
-
-
+		<div style="margin-left: 220px;width: 200px;height: 200px; float:right"> <canvas id="graph_2" width="1" height="1"> </canvas> Acceleration Time graph </div>
+		<div style="clear: both;"></div>
 
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-	<script type="text/javascript">
-		var buyerData = {
-			labels : [], // x axis
-			datasets : [
-			{
-			fillColor : "rgba(255,255,255,0.4)", // color of the area
-			//fill: false,
-			strokeColor : "rgba(255,0,0,0.4)", // color for the line draw
-			//tension: 10,
-			
-			//pointColor : "#FFF",
-			//pointStrokeColor : "#FFF",
-			data : [] // y axis
-		}
-		]
-	};
 
-	var graph_1 = document.getElementById('graph_1').getContext('2d');
-	var chart_1 = new Chart(graph_1).Line(buyerData, {
-		showTooltips: false,
-		scaleShowGridLines : false,
-		pointDot : false,
-		//bezierCurve: false,
-		responsive: true,
-		bezierCurve : true,
-		bezierCurveTension : 0.4
-		  //bezierCurve : false,
-		//scaleFontSize: 0
-	});
-	var gravity = 9.81;
 
-	setTimeout(function() {
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+		<script type="text/javascript">
+			var buyerData = {
+labels : [], // x axis
+	 datasets : [
+	 {
+fillColor : "rgba(255,255,255,0.4)", // color of the area
+	    //fill: false,
+	    strokeColor : "rgba(255,0,0,0.4)", // color for the line draw
+	    //tension: 10,
+
+	    //pointColor : "#FFF",
+	    //pointStrokeColor : "#FFF",
+	    data : [] // y axis
+	 }
+	 ]
+			};
+
+var graph_1 = document.getElementById('graph_1').getContext('2d');
+var chart_1 = new Chart(graph_1).Line(buyerData, {
+showTooltips: false,
+scaleShowGridLines : false,
+pointDot : false,
+//bezierCurve: false,
+responsive: true,
+bezierCurve : true,
+bezierCurveTension : 0.4
+//bezierCurve : false,
+//scaleFontSize: 0
+});
+var gravity = 9.81;
+
+setTimeout(function() {
 		//barDemo.removeData();
 		//barDemo.addData([dData()], 'dD ' + index);
 		//index++;
@@ -64,33 +64,33 @@
 		//chart.addData([6,7], "6","7");
 		chart_1.addData([0],"0");
 		//chart.removeData();
-	}, 0);
-	setTimeout(function() {
+		}, 0);
+setTimeout(function() {
 		chart_1.addData([1 * gravity],"1");
 		//chart.removeData();
-	}, 1000);
-	setTimeout(function() {
+		}, 1000);
+setTimeout(function() {
 		chart_1.addData([-1 * gravity],"2");
 		//chart.removeData();
-	}, 2000);
-	setTimeout(function() {
+		}, 2000);
+setTimeout(function() {
 		chart_1.addData([0],"3");
 		//chart.removeData();
-	}, 3000);
-	/*
-	setTimeout(function() {
-		chart_1.addData([4 * gravity],"4");
-		//chart.removeData();
-	}, 4000);
-	setTimeout(function() {
-		chart_1.addData([5 * gravity],"5");
-		//chart.removeData();
-	}, 5000);
-	setTimeout(function() {
-		chart_1.addData([6 * gravity],"6");
-		//chart.removeData();
-	}, 6000);
-*/
+		}, 3000);
+/*
+   setTimeout(function() {
+   chart_1.addData([4 * gravity],"4");
+//chart.removeData();
+}, 4000);
+setTimeout(function() {
+chart_1.addData([5 * gravity],"5");
+//chart.removeData();
+}, 5000);
+setTimeout(function() {
+chart_1.addData([6 * gravity],"6");
+//chart.removeData();
+}, 6000);
+ */
 
 
 
@@ -99,141 +99,327 @@
 
 <script type="text/javascript">
 	var accelerationData = {
-			labels : [], // x axis
-			datasets : [
-			{
-			fillColor : "rgba(255,255,255,0.4)", // color of the area
-			//fill: false,
-			strokeColor : "rgba(255,0,0,0.4)", // color for the line draw
-			//pointColor : "#FFF",
-			//pointStrokeColor : "#FFF",
-			data : [] // y axis
-		}
-		]
+labels : [], // x axis
+	 datasets : [
+	 {
+fillColor : "rgba(255,255,255,0.4)", // color of the area
+	    //fill: false,
+	    strokeColor : "rgba(255,0,0,0.4)", // color for the line draw
+	    //pointColor : "#FFF",
+	    //pointStrokeColor : "#FFF",
+	    data : [] // y axis
+	 }
+	 ]
 	};
 
-	var buyers = document.getElementById('graph_2').getContext('2d');
-	var chart_2 = new Chart(buyers).Line(accelerationData, {
-		showTooltips: false,
-		scaleShowGridLines : false,
-		pointDot : false,
-		bezierCurve: false,
-		responsive: true,
-		//scaleFontSize: 0
-	});
+var buyers = document.getElementById('graph_2').getContext('2d');
+var chart_2 = new Chart(buyers).Line(accelerationData, {
+showTooltips: false,
+scaleShowGridLines : false,
+pointDot : false,
+bezierCurve: false,
+responsive: true,
+//scaleFontSize: 0
+});
 
-	setTimeout(function() {
+setTimeout(function() {
 		chart_2.addData([9.81],"0");
 		//chart_2.removeData();
-	}, 0000);
-	setTimeout(function() {
+		}, 0000);
+setTimeout(function() {
 		chart_2.addData([9.81],"1");
 		//chart_2.removeData();
-	}, 1000);
-	setTimeout(function() {
+		}, 1000);
+setTimeout(function() {
 		chart_2.addData([9.81],"2");
 		//chart_2.removeData();
-	}, 2000);
-	setTimeout(function() {
+		}, 2000);
+setTimeout(function() {
 		chart_2.addData([9.81],"3");
 		//chart_2.removeData();
-	}, 3000);
-	setTimeout(function() {
+		}, 3000);
+setTimeout(function() {
 		chart_2.addData([9.81],"4");
 		//chart.removeData();
-	}, 4000);
+		}, 4000);
 
-</script>
-
-
-<script src="js/three.min.js"></script>
-<script src="js/OrbitControls.js"></script>
-<script>
-	var camera;
-	var scene;
-	var renderer;
-	var sphere,sphere_geometry,sphere_material;
-	var plane,plane_geometry,plane_material;
-	var camera_controls;
-	var pause_flag = true;
-	var sceneTime = 0.0;
-	var elapsedTime = undefined;
-	var initialTime = undefined;
-
-	var velocity = -1;
-	var ball_gravity = 9.8;
-	var gravity_choice;
-	var height = undefined;
-
-	init();
-	animate();
-	function init() {
-				//setting up the camera
-				camera = new THREE.PerspectiveCamera( 75, (1000 )  / (500), 1, 10000 );
-				//camera.position.y = 500;
-				//camera.position.z = 500;
-				camera.position.set(0,30,150);
-				scene = new THREE.Scene();
-
-				var lightAmb = new THREE.AmbientLight(0x777777);
-				lightAmb.intensity = 1;
-				scene.add(lightAmb);
-				
-				var light = new THREE.SpotLight();
-				light.position.set( 1000, 1000, 1000 );
-				//light.position.set( 1000, 1000, 1000 );
-				light.target.position.set( 0, 0, 0 );
-				light.castShadow = true;
-				scene.add( light );
-				var ball_normal = new THREE.TextureLoader().load( 'images/ball_normal.jpg' );
-				var ball_diffuse = new THREE.TextureLoader().load( 'images/ball_diffuse.jpg' );
-
-				sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
-				//sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 3, opacity: 1, wireframe: false } );
-				sphere_material  = new THREE.MeshPhongMaterial( { map: ball_diffuse, normalMap: ball_normal} );
-
-				sphere = new THREE.Mesh(sphere_geometry,sphere_material);
-				height = 100;
-				// sphere.scale.set(0.1,0.1,0.1); // setting the size of the ball
-				sphere.position.set(0,height,0);
-				sphere.castShadow = true;
-				gravity_choice = document.getElementById('gravitySelect');
+	</script>
 
 
-				//SETTING UP THE initial attributes to calculate acceleration of a ball when it drops!
+	<script src="js/three.min.js"></script>
+	<script src="js/OrbitControls.js"></script>
+	<script>
+		var camera;
+		var scene;
+		var renderer;
+		var sphere,sphere_geometry,sphere_material;
+		var plane,plane_geometry,plane_material;
+		var camera_controls;
+		var pause_flag = true;
+		var sceneTime = 0.0;
+		var elapsedTime = undefined;
+		var initialTime = undefined;
+
+		var velocity = -1;
+		var ball_gravity = 9.8;
+		var gravity_choice;
+		var height = undefined;
+
+		var floorTexture = undefined;
+		var normal_map = undefined;
+		var diffuse_map = undefined;
+		var floorMaterial = undefined;
+		var floorGeometry = undefined;
+
+		init();
+		animate();
+		function init() {
+			//setting up the camera
+			camera = new THREE.PerspectiveCamera( 75, (1000 )  / (500), 1, 10000 );
+			//camera.position.y = 500;
+			//camera.position.z = 500;
+			camera.position.set(0,30,150);
+			scene = new THREE.Scene();
+
+			var lightAmb = new THREE.AmbientLight(0x777777);
+			lightAmb.intensity = 1;
+			scene.add(lightAmb);
+
+			var light = new THREE.SpotLight();
+			light.position.set( 1000, 1000, 1000 );
+			//light.position.set( 1000, 1000, 1000 );
+			light.target.position.set( 0, 0, 0 );
+			light.castShadow = true;
+			scene.add( light );
+			var ball_normal = new THREE.TextureLoader().load( 'images/ball_normal.jpg' );
+			var ball_diffuse = new THREE.TextureLoader().load( 'images/ball_diffuse.jpg' );
+
+			sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
+			//sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 3, opacity: 1, wireframe: false } );
+			sphere_material  = new THREE.MeshPhongMaterial( { map: ball_diffuse, normalMap: ball_normal} );
+
+			sphere = new THREE.Mesh(sphere_geometry,sphere_material);
+			height = 100;
+			// sphere.scale.set(0.1,0.1,0.1); // setting the size of the ball
+			sphere.position.set(0,height,0);
+			sphere.castShadow = true;
+			gravity_choice = document.getElementById('gravitySelect');
+
+
+			//SETTING UP THE initial attributes to calculate acceleration of a ball when it drops!
+			sphere.H0 = height; // the default height!
+			sphere.V0 = 0;
+			sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
+			sphere.HF = 0;
+			sphere.bouncing_time = 0;
+			sphere.bounciness = 1;
+			//END OF SETTING UP!
+
+			scene.add(sphere);
+			//var planeTexture = new THREE.ImageUtils.loadTexture("images/grass.png");
+			//planeTexture.wrapS = planeTexture.wrapT = THREE.RepeatWrapping;
+			// planeTexture.repeat.set(10,10);
+			/*
+			plane_geometry = new THREE.PlaneGeometry( 500, 500, 8, 8 );
+			var color_1 = new THREE.Color("rgb(0%, 0%, 0%)");
+			plane_material = new THREE.MeshLambertMaterial( { color: color_1, wireframe: true } );
+			plane = new THREE.Mesh(plane_geometry,plane_material);
+			plane.scale.set(0.3,0.3,0.3);
+			plane.rotation.x = -Math.PI/2;
+			plane.position.set(0,0,0);
+			*/
+			//plane.castShadow = false;
+			//var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
+			//var texture = new THREE.TextureLoader().load( "textures/water.jpg" );
+			floorTexture = new THREE.TextureLoader().load( 'images/grass.jpg' );
+			//floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+			//floorTexture.repeat.set( 10, 10 );
+			normal_map = new THREE.TextureLoader().load( 'images/normal_map.jpg' );
+			diffuse_map = new THREE.TextureLoader().load( 'images/diffuse_map.jpg' );
+			var bump_map = new THREE.TextureLoader().load('images/bump_map.jpg');
+			//var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide} );
+			floorMaterial = new THREE.MeshPhongMaterial( { map: diffuse_map, normalMap: normal_map, side: THREE.DoubleSide} );
+			floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
+			plane = new THREE.Mesh(floorGeometry, floorMaterial);
+			plane.receiveShadow = true;
+			plane.position.y = -0.5;
+			plane.rotation.x = Math.PI / 2;
+
+			scene.add(plane);
+
+			camera.lookAt(plane.position);
+			//setting up the renderer
+			renderer = new THREE.WebGLRenderer( { antialias: true } );
+			renderer.setSize( 1000 , 500);
+			renderer.setClearColor( 0xFFFFFF );
+			//renderer.shadowMapEnabled = true;
+			document.body.appendChild( renderer.domElement );
+
+			var button = document.getElementById("button"); // getting a button!
+			var slider =  document.getElementById('slider'); // getting the slider for bounciness
+			var slider_size =  document.getElementById('slider_size');
+			var button_pause = document.getElementById('button_pause');
+			//adding some  camera controls
+			camera_controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+			//drawing text on canvas
+			/*
+			var canvas1 = document.createElement('canvas');
+			canvas1.width = 1024;
+			canvas1.height  = 1024;
+			var context1 = canvas1.getContext('2d');
+			context1.font = "Bold 20px Arial";
+			context1.fillStyle = "rgba(255,0,0,0.95)";
+			context1.fillText('Hello, world!', 0, 50);
+			var texture1 = new THREE.Texture(canvas1) 
+			texture1.needsUpdate = true;
+			var material1 = new THREE.MeshBasicMaterial( {map: texture1, side:THREE.DoubleSide } );
+			material1.transparent = true;
+			var mesh1 = new THREE.Mesh(
+			new THREE.PlaneGeometry(canvas1.width, canvas1.height),
+			material1
+			);
+			mesh1.position.set(400,-400,0);
+			mesh1.visibile = false;
+			scene.add( mesh1 );
+			*/
+
+			/*
+			adding shadows
+			*/
+
+			renderer.shadowMapEnabled = true; 
+			var spotlight = new THREE.SpotLight( 0xFFFFFF );
+			spotlight.intensity = 0.5;
+			//spotlight.position.set(1000,1000,1000);
+			spotlight.castShadow = true;
+			spotlight.position.set(30,200,30);
+			spotlight.shadowCameraNear = 0.5;
+			spotlight.decay = 2;
+
+			//spotlight.shadow.mapSize.width = 10000;
+			//spotlight.shadow.mapSize.height = 10;
+			//spotlight.shadowCameraVisible = true;
+			var helper = new THREE.CameraHelper(spotlight.shadow.camera);
+			//scene.add(helper);
+			//	spotlight.shadowDarkness = 0.95;
+			//	spotlight.intensity = 2;
+			// must enable shadow casting ability for the light
+
+			scene.add(spotlight);
+			//scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
+
+
+
+
+
+
+
+
+
+
+			//starting the timer
+			initialTime = (new Date).getTime();
+		}
+		function sleepFor( sleepDuration ){
+			var now = new Date().getTime();
+			// var sleepDuration = 1000;
+			while(new Date().getTime() < now + sleepDuration){ 
+				//camera_controls.update();
+				//render_2();
+				/* do nothing */ } 
+		}
+
+		function animate() {
+			requestAnimationFrame(animate);
+			//sphere.rotation.x += 0.1;
+			// console.log(sphere.radius);
+			camera_controls.update();
+			if(pause_flag == true) {
+				sceneTime += 33/1000;
+				render();
+				} else {
+				render_2();
+			}
+		}
+		function render_2() {
+			renderer.render(scene,camera); 
+		}
+
+		function render() {
+			// var h = sphere.position.y;
+			// h = this.H0 + (this.V0 * 2) - (0.5 * ball_gravity);
+
+			updatePosition();
+
+
+
+
+			renderer.render(scene,camera);  
+		}
+		var flag = 1;
+
+		function updatePosition() {
+			//console.log("position is " + sphere.position.y);
+			//sphere.position.z += 0.1;
+			sphere.rotation.x += 0.05;
+			if( h <= 5) {
+				sphere.rotation.x = 0;
+			}
+			var t = sceneTime - sphere.bouncing_time;
+			var h = sphere.position.y;
+			h = sphere.H0 + (sphere.V0 * t) - (0.5 * ball_gravity * t * t);
+			//console.log("the sphere vf is " + sphere.H0);
+
+			if( h <=  5 ) { // we would assume 5 is the ground!
+
+
+				sphere.bouncing_time = sceneTime;
+				sphere.V0 = sphere.VF * sphere.bounciness;
+				sphere.HF = (sphere.V0 * sphere.V0) / (2 * ball_gravity);
+				sphere.VF = Math.sqrt(2*ball_gravity*sphere.HF);
+				sphere.H0 = 5;
+				//console.log("the sphere vf is " + sphere.bounciness);
+				// sleepFor(10000);
+				} else  {
+				sphere.position.y = h;
+				//flag = -1;
+			}
+			/*
+			if (h <= 0) {
+				sphere.bouncing_time = sceneTime;
+				sphere.V0 = sphere.VF * sphere.bounciness;
+				sphere.HF = (sphere.V0 * sphere.V0) / (2 * ball_gravity);
+				sphere.VF = Math.sqrt(2*ball_gravity*sphere.HF);
+				sphere.H0 = 0;
+				} else {
+				sphere.position.y = h;
+			}
+			*/
+
+		}
+		function scheduleA(event) {
+			var selected_value = this.options[this.selectedIndex].text;
+			if(selected_value == "Moon") {
+				ball_gravity = 1/6 * ball_gravity;
 				sphere.H0 = height; // the default height!
 				sphere.V0 = 0;
 				sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
 				sphere.HF = 0;
 				sphere.bouncing_time = 0;
 				sphere.bounciness = 1;
-				//END OF SETTING UP!
+				sceneTime = 0;
 
-				scene.add(sphere);
-				//var planeTexture = new THREE.ImageUtils.loadTexture("images/grass.png");
-				//planeTexture.wrapS = planeTexture.wrapT = THREE.RepeatWrapping;
-				// planeTexture.repeat.set(10,10);
 				/*
-				plane_geometry = new THREE.PlaneGeometry( 500, 500, 8, 8 );
-				var color_1 = new THREE.Color("rgb(0%, 0%, 0%)");
-				plane_material = new THREE.MeshLambertMaterial( { color: color_1, wireframe: true } );
-				plane = new THREE.Mesh(plane_geometry,plane_material);
-				plane.scale.set(0.3,0.3,0.3);
-				plane.rotation.x = -Math.PI/2;
-				plane.position.set(0,0,0);
+				loading texture for moon
 				*/
-				//plane.castShadow = false;
-				//var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
-				//var texture = new THREE.TextureLoader().load( "textures/water.jpg" );
-				var floorTexture = new THREE.TextureLoader().load( 'images/grass.jpg' );
-				//floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
-				//floorTexture.repeat.set( 10, 10 );
-				var normal_map = new THREE.TextureLoader().load( 'images/normal_map.jpg' );
-				var diffuse_map = new THREE.TextureLoader().load( 'images/diffuse_map.jpg' );
+				scene.remove(plane);
+				normal_map = new THREE.TextureLoader().load( 'images/moon_normal.jpg' );
+				diffuse_map = new THREE.TextureLoader().load( 'images/moon_diffuse.jpg' );
 				var bump_map = new THREE.TextureLoader().load('images/bump_map.jpg');
 				//var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide} );
-				var floorMaterial = new THREE.MeshPhongMaterial( { map: diffuse_map, normalMap: normal_map, side: THREE.DoubleSide} );
-				var floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
+				floorMaterial = new THREE.MeshPhongMaterial( { map: diffuse_map, normalMap: normal_map, side: THREE.DoubleSide} );
+				floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
 				plane = new THREE.Mesh(floorGeometry, floorMaterial);
 				plane.receiveShadow = true;
 				plane.position.y = -0.5;
@@ -241,215 +427,69 @@
 
 				scene.add(plane);
 
-				camera.lookAt(plane.position);
-				//setting up the renderer
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setSize( 1000 , 500);
-				renderer.setClearColor( 0xFFFFFF );
-				//renderer.shadowMapEnabled = true;
-				document.body.appendChild( renderer.domElement );
-
-				var button = document.getElementById("button"); // getting a button!
-				var slider =  document.getElementById('slider'); // getting the slider for bounciness
-				var slider_size =  document.getElementById('slider_size');
-				var button_pause = document.getElementById('button_pause');
-				//adding some  camera controls
-				camera_controls = new THREE.OrbitControls( camera, renderer.domElement );
-
-				//drawing text on canvas
-				/*
-				var canvas1 = document.createElement('canvas');
-				canvas1.width = 1024;
-				canvas1.height  = 1024;
-				var context1 = canvas1.getContext('2d');
-				context1.font = "Bold 20px Arial";
-				context1.fillStyle = "rgba(255,0,0,0.95)";
-				context1.fillText('Hello, world!', 0, 50);
-				var texture1 = new THREE.Texture(canvas1) 
-				texture1.needsUpdate = true;
-				var material1 = new THREE.MeshBasicMaterial( {map: texture1, side:THREE.DoubleSide } );
-				material1.transparent = true;
-				var mesh1 = new THREE.Mesh(
-					new THREE.PlaneGeometry(canvas1.width, canvas1.height),
-					material1
-					);
-				mesh1.position.set(400,-400,0);
-				mesh1.visibile = false;
-				scene.add( mesh1 );
-				*/
-
-				/*
-					adding shadows
-					*/
-
-					renderer.shadowMapEnabled = true; 
-					var spotlight = new THREE.SpotLight( 0xFFFFFF );
-					spotlight.intensity = 0.5;
-				//spotlight.position.set(1000,1000,1000);
-				spotlight.castShadow = true;
-				spotlight.position.set(30,200,30);
-				spotlight.shadowCameraNear = 0.5;
-				spotlight.decay = 2;
-
-				//spotlight.shadow.mapSize.width = 10000;
-				//spotlight.shadow.mapSize.height = 10;
-				//spotlight.shadowCameraVisible = true;
-				var helper = new THREE.CameraHelper(spotlight.shadow.camera);
-				//scene.add(helper);
-			//	spotlight.shadowDarkness = 0.95;
-			//	spotlight.intensity = 2;
-				// must enable shadow casting ability for the light
-
-				scene.add(spotlight);
-				//scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
-				
-				
-				
-
-
-
-
-
-
-
-				//starting the timer
-				initialTime = (new Date).getTime();
-			}
-			function sleepFor( sleepDuration ){
-				var now = new Date().getTime();
-				// var sleepDuration = 1000;
-				while(new Date().getTime() < now + sleepDuration){ 
-					//camera_controls.update();
-					//render_2();
-				/* do nothing */ } 
-			}
-
-			function animate() {
-				requestAnimationFrame(animate);
-				//sphere.rotation.x += 0.1;
-				// console.log(sphere.radius);
-				camera_controls.update();
-				if(pause_flag == true) {
-					sceneTime += 33/1000;
-					render();
-				} else {
-					render_2();
-				}
-			}
-			function render_2() {
-				renderer.render(scene,camera); 
-			}
-
-			function render() {
-				// var h = sphere.position.y;
-				// h = this.H0 + (this.V0 * 2) - (0.5 * ball_gravity);
-
-				updatePosition();
-
-
-
-
-				renderer.render(scene,camera);  
-			}
-			var flag = 1;
-
-			function updatePosition() {
-				//console.log("position is " + sphere.position.y);
-				//sphere.position.z += 0.1;
-				sphere.rotation.x += 0.05;
-				if( h <= 5) {
-					sphere.rotation.x = 0;
-				}
-				var t = sceneTime - sphere.bouncing_time;
-				var h = sphere.position.y;
-				h = sphere.H0 + (sphere.V0 * t) - (0.5 * ball_gravity * t * t);
-				//console.log("the sphere vf is " + sphere.H0);
-
-				if( h <=  5 ) { // we would assume 5 is the ground!
-
-
-					sphere.bouncing_time = sceneTime;
-					sphere.V0 = sphere.VF * sphere.bounciness;
-					sphere.HF = (sphere.V0 * sphere.V0) / (2 * ball_gravity);
-					sphere.VF = Math.sqrt(2*ball_gravity*sphere.HF);
-					sphere.H0 = 5;
-					//console.log("the sphere vf is " + sphere.bounciness);
-					// sleepFor(10000);
-				} else  {
-					sphere.position.y = h;
-					//flag = -1;
-				}
-				/*
-				if (h <= 0) {
-					sphere.bouncing_time = sceneTime;
-					sphere.V0 = sphere.VF * sphere.bounciness;
-					sphere.HF = (sphere.V0 * sphere.V0) / (2 * ball_gravity);
-					sphere.VF = Math.sqrt(2*ball_gravity*sphere.HF);
-					sphere.H0 = 0;
-					} else {
-					sphere.position.y = h;
-				}
-				*/
-
-			}
-			function scheduleA(event) {
-				var selected_value = this.options[this.selectedIndex].text;
-				if(selected_value == "Moon") {
-					ball_gravity = 1/6 * ball_gravity;
-					sphere.H0 = height; // the default height!
-					sphere.V0 = 0;
-					sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
-					sphere.HF = 0;
-					sphere.bouncing_time = 0;
-					sphere.bounciness = 1;
-					sceneTime = 0;
-
 				} else if (selected_value == "Earth") {
-					ball_gravity = 9.8;
-					sphere.H0 = height; // the default height!
-					sphere.V0 = 0;
-					sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
-					sphere.HF = 0;
-					sphere.bouncing_time = 0;
-					sphere.bounciness = 1;
-					sceneTime = 0;
-				}	
+				ball_gravity = 9.8;
+				sphere.H0 = height; // the default height!
+				sphere.V0 = 0;
+				sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
+				sphere.HF = 0;
+				sphere.bouncing_time = 0;
+				sphere.bounciness = 1;
+				sceneTime = 0;
 
-			}
+				scene.remove(plane);
+				normal_map = new THREE.TextureLoader().load( 'images/normal_map.jpg' );
+				diffuse_map = new THREE.TextureLoader().load( 'images/diffuse_map.jpg' );
+				var bump_map = new THREE.TextureLoader().load('images/bump_map.jpg');
+				//var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide} );
+				floorMaterial = new THREE.MeshPhongMaterial( { map: diffuse_map, normalMap: normal_map, side: THREE.DoubleSide} );
+				floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
+				plane = new THREE.Mesh(floorGeometry, floorMaterial);
+				plane.receiveShadow = true;
+				plane.position.y = -0.5;
+				plane.rotation.x = Math.PI / 2;
 
-
-		</script>
-	</body>
-	<SELECT ID="gravitySelect" NAME="graivtySelect" onchange="scheduleA.call(this, event)">
-		<OPTION ID="1" VALUE="TEST1" SELECTED> Earth </OPTION>
-		<OPTION ID="2" VALUE="TEST2"> Moon </OPTION>
-	</SELECT>
-	<br>
-	<button id="button" onclick="myFunction()"> change gravity </button>
-	<button id="button_pause" > pause </button>
-	<br>
-	<input type="range" name="slider" min="0" max="1" step="0.1" value="0" id="slider" >air resistance</input>
-	<br>
-	<input type="range" name="slider_size" min="0.1" max="1" step="0.1" value="0.1" id="slider_size"> size of the ball</input>
-	<script type="text/javascript">
-		// this is the place where you declare all the buttons all that so that you can access any variable!
-		button.onclick = function() {
-		//sphere.rotation.x += 0.1;
-		// reinitializing some stuff
-		// var temp_h0 = sphere.position.y;
-		ball_gravity = 1/6 * ball_gravity;
-		sphere.H0 = 50; // the default height!
-		sphere.V0 = 0;
-		sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
-		sphere.HF = 0;
-		sphere.bouncing_time = 0;
-		sphere.bounciness = 1;
-		sceneTime = 0;
-		//scene.remove(sphere);
+				scene.add(plane);
 
 
-	}
-	slider.onchange = function() {   
+
+			}	
+
+		}
+
+
+	</script>
+</body>
+<SELECT ID="gravitySelect" NAME="graivtySelect" onchange="scheduleA.call(this, event)">
+	<OPTION ID="1" VALUE="TEST1" SELECTED> Earth </OPTION>
+	<OPTION ID="2" VALUE="TEST2"> Moon </OPTION>
+</SELECT>
+<br>
+<button id="button" onclick="myFunction()"> change gravity </button>
+<button id="button_pause" > pause </button>
+<br>
+<input type="range" name="slider" min="0" max="1" step="0.1" value="0" id="slider" >air resistance</input>
+<br>
+<input type="range" name="slider_size" min="0.1" max="1" step="0.1" value="0.1" id="slider_size"> size of the ball</input>
+<script type="text/javascript">
+	// this is the place where you declare all the buttons all that so that you can access any variable!
+button.onclick = function() {
+	//sphere.rotation.x += 0.1;
+	// reinitializing some stuff
+	// var temp_h0 = sphere.position.y;
+	ball_gravity = 1/6 * ball_gravity;
+	sphere.H0 = 50; // the default height!
+	sphere.V0 = 0;
+	sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
+	sphere.HF = 0;
+	sphere.bouncing_time = 0;
+	sphere.bounciness = 1;
+	sceneTime = 0;
+	//scene.remove(sphere);
+
+
+}
+slider.onchange = function() {   
 	sphere.H0 = height; // the default height!
 	sphere.V0 = 0;
 	sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
