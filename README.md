@@ -1,3 +1,5 @@
 # cgt390
-just playing around webgl using three js
-HELLO!2131
+The purpose of this project is to
+- Demonstrate the concept of free fall motion
+
+This project is implemented using WebGL and Three.js 

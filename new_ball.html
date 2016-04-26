@@ -1,34 +1,34 @@
 <html>
-	<head>
-		<title>My first Three.js app</title>
-		<style>
-			body { margin: 0; }
-			canvas { width: 100%; height: 50% }
-			.container {
+<head>
+	<title>My first Three.js app</title>
+	<style>
+		body { margin: 0; }
+		canvas { width: 100%; height: 50% }
+		.container {
 
-				width: 200px;
-				height: 200px;
+			width: 200px;
+			height: 200px;
 
-			}
-		</style>
-	</head>
-	<h1> Newton's Free Fall Concept</h1>
-	<body>
+		}
+	</style>
+</head>
+<h1> Newton's Free Fall Concept</h1>
+<body>
 
-		<div style="width: 200px;height: 200px; float: left;"> <canvas id="graph_1" width="1" height="1"></canvas> Velocity time graph</div>
+	<div style="width: 200px;height: 200px; float: left;"> <canvas id="graph_1" width="1" height="1"></canvas> Velocity time graph</div>
 
-		<div style="margin-left: 220px;width: 200px;height: 200px; float:right"> <canvas id="graph_2" width="1" height="1"> </canvas> Acceleration Time graph </div>
-		<div style="clear: both;"></div>
-
-
+	<div style="margin-left: 220px;width: 200px;height: 200px; "> <canvas id="graph_2" width="1" height="1"> </canvas> Acceleration Time graph </div>
+	<div style="clear: both;"></div>
 
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-		<script type="text/javascript">
-			var buyerData = {
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+	<script type="text/javascript">
+		var buyerData = {
 labels : [], // x axis
-	 datasets : [
-	 {
+datasets : [
+{
 fillColor : "rgba(255,255,255,0.4)", // color of the area
 	    //fill: false,
 	    strokeColor : "rgba(255,0,0,0.4)", // color for the line draw
@@ -37,19 +37,18 @@ fillColor : "rgba(255,255,255,0.4)", // color of the area
 	    //pointColor : "#FFF",
 	    //pointStrokeColor : "#FFF",
 	    data : [] // y axis
-	 }
-	 ]
-			};
+	}
+	]
+};
 
 var graph_1 = document.getElementById('graph_1').getContext('2d');
 var chart_1 = new Chart(graph_1).Line(buyerData, {
-showTooltips: false,
-scaleShowGridLines : false,
-pointDot : false,
+	showTooltips: false,
+	scaleShowGridLines : false,
+	pointDot : false,
 //bezierCurve: false,
 responsive: true,
-bezierCurve : true,
-bezierCurveTension : 0.4
+bezierCurve: false,
 //bezierCurve : false,
 //scaleFontSize: 0
 });
@@ -64,19 +63,19 @@ setTimeout(function() {
 		//chart.addData([6,7], "6","7");
 		chart_1.addData([0],"0");
 		//chart.removeData();
-		}, 0);
+	}, 0);
 setTimeout(function() {
-		chart_1.addData([1 * gravity],"1");
+	chart_1.addData([1 * gravity],"1");
 		//chart.removeData();
-		}, 1000);
+	}, 1000);
 setTimeout(function() {
-		chart_1.addData([-1 * gravity],"2");
+	chart_1.addData([-1 * gravity],"2");
 		//chart.removeData();
-		}, 2000);
+	}, 2000);
 setTimeout(function() {
-		chart_1.addData([0],"3");
+	chart_1.addData([0],"3");
 		//chart.removeData();
-		}, 3000);
+	}, 3000);
 /*
    setTimeout(function() {
    chart_1.addData([4 * gravity],"4");
@@ -90,7 +89,7 @@ setTimeout(function() {
 chart_1.addData([6 * gravity],"6");
 //chart.removeData();
 }, 6000);
- */
+*/
 
 
 
@@ -100,105 +99,129 @@ chart_1.addData([6 * gravity],"6");
 <script type="text/javascript">
 	var accelerationData = {
 labels : [], // x axis
-	 datasets : [
-	 {
+datasets : [
+{
 fillColor : "rgba(255,255,255,0.4)", // color of the area
 	    //fill: false,
 	    strokeColor : "rgba(255,0,0,0.4)", // color for the line draw
 	    //pointColor : "#FFF",
 	    //pointStrokeColor : "#FFF",
 	    data : [] // y axis
-	 }
-	 ]
-	};
+	}
+	]
+};
 
 var buyers = document.getElementById('graph_2').getContext('2d');
 var chart_2 = new Chart(buyers).Line(accelerationData, {
-showTooltips: false,
-scaleShowGridLines : false,
-pointDot : false,
-bezierCurve: false,
-responsive: true,
+	showTooltips: false,
+	scaleShowGridLines : false,
+	pointDot : false,
+	bezierCurve: false,
+	responsive: true,
 //scaleFontSize: 0
 });
 
 setTimeout(function() {
-		chart_2.addData([9.81],"0");
+	chart_2.addData([9.81],"0");
 		//chart_2.removeData();
-		}, 0000);
+	}, 0000);
 setTimeout(function() {
-		chart_2.addData([9.81],"1");
+	chart_2.addData([9.81],"1");
 		//chart_2.removeData();
-		}, 1000);
+	}, 1000);
 setTimeout(function() {
-		chart_2.addData([9.81],"2");
+	chart_2.addData([9.81],"2");
 		//chart_2.removeData();
-		}, 2000);
+	}, 2000);
 setTimeout(function() {
-		chart_2.addData([9.81],"3");
+	chart_2.addData([9.81],"3");
 		//chart_2.removeData();
-		}, 3000);
+	}, 3000);
 setTimeout(function() {
-		chart_2.addData([9.81],"4");
+	chart_2.addData([9.81],"4");
 		//chart.removeData();
-		}, 4000);
+	}, 4000);
 
-	</script>
+</script>
 
 
-	<script src="js/three.min.js"></script>
-	<script src="js/OrbitControls.js"></script>
-	<script>
-		var camera;
-		var scene;
-		var renderer;
-		var sphere,sphere_geometry,sphere_material;
-		var plane,plane_geometry,plane_material;
-		var camera_controls;
-		var pause_flag = true;
-		var sceneTime = 0.0;
-		var elapsedTime = undefined;
-		var initialTime = undefined;
+<script src="js/THREE.js"></script>
 
-		var velocity = -1;
-		var ball_gravity = 9.8;
-		var gravity_choice;
-		var height = undefined;
+<script src="fonts/gentilis_bold.typeface.js"></script>
+<script src="fonts/gentilis_regular.typeface.js"></script>
+<script src="fonts/optimer_bold.typeface.js"></script>
+<script src="fonts/optimer_regular.typeface.js"></script>
+<script src="fonts/helvetiker_bold.typeface.js"></script>
+<script src="fonts/helvetiker_regular.typeface.js"></script>
+<script src="fonts/droid_sans_regular.typeface.js"></script>
+<script src="fonts/droid_sans_bold.typeface.js"></script>
+<script src="fonts/droid_serif_regular.typeface.js"></script>
+<script src="fonts/droid_serif_bold.typeface.js"></script>
+<script src="js/three.min.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script>
+	var camera;
+	var scene;
+	var renderer;
+	var sphere,sphere_geometry,sphere_material;
+	var plane,plane_geometry,plane_material;
+	var camera_controls;
+	var pause_flag = true;
+	var sceneTime = 0.0;
+	var elapsedTime = undefined;
+	var initialTime = undefined;
 
-		var floorTexture = undefined;
-		var normal_map = undefined;
-		var diffuse_map = undefined;
-		var floorMaterial = undefined;
-		var floorGeometry = undefined;
+	var velocity = -1;
+	var ball_gravity = 9.8;
+	var gravity_choice;
+	var height = undefined;
 
-		init();
-		animate();
-		function init() {
+	var floorTexture = undefined;
+	var normal_map = undefined;
+	var diffuse_map = undefined;
+	var floorMaterial = undefined;
+	var floorGeometry = undefined;
+	var geo_skybox = undefined;
+	var material_geoskybox = undefined;
+	var mesh_skybox = undefined;
+	var lughtAmb = undefined;
+	var spotlight = undefined;
+	var scale = 1;
+	var mesh_text;
+
+	init();
+	animate();
+	function init() {
 			//setting up the camera
-			camera = new THREE.PerspectiveCamera( 75, (1000 )  / (500), 1, 10000 );
+			camera = new THREE.PerspectiveCamera( 50, (1000 )  / (500), 1, 10000 );
 			//camera.position.y = 500;
 			//camera.position.z = 500;
-			camera.position.set(0,30,150);
+			camera.position.set(0,150,400);
 			scene = new THREE.Scene();
 
-			var lightAmb = new THREE.AmbientLight(0x777777);
+			lightAmb = new THREE.AmbientLight(0x777777);
 			lightAmb.intensity = 1;
 			scene.add(lightAmb);
-
+			/*
 			var light = new THREE.SpotLight();
-			light.position.set( 1000, 1000, 1000 );
+			light.position.set( -1000, 1000, 1000 );
 			//light.position.set( 1000, 1000, 1000 );
 			light.target.position.set( 0, 0, 0 );
 			light.castShadow = true;
 			scene.add( light );
+			*/
 			var ball_normal = new THREE.TextureLoader().load( 'images/ball_normal.jpg' );
 			var ball_diffuse = new THREE.TextureLoader().load( 'images/ball_diffuse.jpg' );
+
 
 			sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
 			//sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 3, opacity: 1, wireframe: false } );
 			sphere_material  = new THREE.MeshPhongMaterial( { map: ball_diffuse, normalMap: ball_normal} );
 
 			sphere = new THREE.Mesh(sphere_geometry,sphere_material);
+
+			//sphere.scale.set(5,5,5);
+
 			height = 100;
 			// sphere.scale.set(0.1,0.1,0.1); // setting the size of the ball
 			sphere.position.set(0,height,0);
@@ -239,7 +262,7 @@ setTimeout(function() {
 			var bump_map = new THREE.TextureLoader().load('images/bump_map.jpg');
 			//var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide} );
 			floorMaterial = new THREE.MeshPhongMaterial( { map: diffuse_map, normalMap: normal_map, side: THREE.DoubleSide} );
-			floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
+			floorGeometry = new THREE.PlaneGeometry(600, 600, 8, 8);
 			plane = new THREE.Mesh(floorGeometry, floorMaterial);
 			plane.receiveShadow = true;
 			plane.position.y = -0.5;
@@ -252,6 +275,7 @@ setTimeout(function() {
 			renderer = new THREE.WebGLRenderer( { antialias: true } );
 			renderer.setSize( 1000 , 500);
 			renderer.setClearColor( 0xFFFFFF );
+			renderer.getMaxAnisotropy();
 			//renderer.shadowMapEnabled = true;
 			document.body.appendChild( renderer.domElement );
 
@@ -289,13 +313,15 @@ setTimeout(function() {
 			*/
 
 			renderer.shadowMapEnabled = true; 
-			var spotlight = new THREE.SpotLight( 0xFFFFFF );
-			spotlight.intensity = 0.5;
+			spotlight = new THREE.SpotLight( 0xFFFFFF );
+			spotlight.intensity = 1;
 			//spotlight.position.set(1000,1000,1000);
 			spotlight.castShadow = true;
-			spotlight.position.set(30,200,30);
-			spotlight.shadowCameraNear = 0.5;
+			//spotlight.position.set(-100,400,30);
+			spotlight.position.set(-20,300,0);
+			spotlight.shadowCameraNear = 1;
 			spotlight.decay = 2;
+			//spotlight.angle = Math.PI/2;
 
 			//spotlight.shadow.mapSize.width = 10000;
 			//spotlight.shadow.mapSize.height = 10;
@@ -309,7 +335,35 @@ setTimeout(function() {
 			scene.add(spotlight);
 			//scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
 
+			/*
+			adding some skies
+			*/
+			/*
+			var skybox_image = new THREE.TextureLoader().load('images/sky2.jpg');
+			var skyGeometry = new THREE.CubeGeometry( 1000, 1000, 1000 );	
 
+			var materialArray = [];
+			for (var i = 0; i < 6; i++)
+			materialArray.push( new THREE.MeshBasicMaterial({
+				map: THREE.ImageUtils.loadTexture( "images/sky.jpg"),
+				side: THREE.BackSide
+			}));
+			var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
+			var skyBox = new THREE.Mesh( skyGeometry, skyMaterial );
+			scene.add( skyBox );
+			*/
+			geo_skybox = new THREE.SphereGeometry( 500, 60, 40 );
+			geo_skybox.scale( - 1, 1, 1 );	
+			material_geoskybox = new THREE.MeshBasicMaterial( {
+				map: new THREE.TextureLoader().load( 'images/sky2.jpg' )
+			} );
+			mesh_skybox = new THREE.Mesh( geo_skybox, material_geoskybox );
+			scene.add( mesh_skybox);
+
+
+			/*
+			adding 3d text
+			*/
 
 
 
@@ -327,7 +381,7 @@ setTimeout(function() {
 			while(new Date().getTime() < now + sleepDuration){ 
 				//camera_controls.update();
 				//render_2();
-				/* do nothing */ } 
+			/* do nothing */ } 
 		}
 
 		function animate() {
@@ -338,7 +392,7 @@ setTimeout(function() {
 			if(pause_flag == true) {
 				sceneTime += 33/1000;
 				render();
-				} else {
+			} else {
 				render_2();
 			}
 		}
@@ -362,29 +416,60 @@ setTimeout(function() {
 		function updatePosition() {
 			//console.log("position is " + sphere.position.y);
 			//sphere.position.z += 0.1;
-			sphere.rotation.x += 0.05;
+			/*
 			if( h <= 5) {
 				sphere.rotation.x = 0;
+			} else {
+				sphere.rotation.x += 0.05;
 			}
+
 			var t = sceneTime - sphere.bouncing_time;
 			var h = sphere.position.y;
 			h = sphere.H0 + (sphere.V0 * t) - (0.5 * ball_gravity * t * t);
 			//console.log("the sphere vf is " + sphere.H0);
 
-			if( h <=  5 ) { // we would assume 5 is the ground!
+
+			if( h <=  5 * scale  ) { // we would assume 5 is the ground!	
 
 
 				sphere.bouncing_time = sceneTime;
 				sphere.V0 = sphere.VF * sphere.bounciness;
 				sphere.HF = (sphere.V0 * sphere.V0) / (2 * ball_gravity);
 				sphere.VF = Math.sqrt(2*ball_gravity*sphere.HF);
-				sphere.H0 = 5;
+				sphere.H0 = 7 * scale;
 				//console.log("the sphere vf is " + sphere.bounciness);
 				// sleepFor(10000);
-				} else  {
+			} else  {
 				sphere.position.y = h;
 				//flag = -1;
 			}
+			*/
+			if( h <= 5) {
+				sphere.rotation.x = 0;
+			} else {
+				sphere.rotation.x += 0.05;
+			}
+
+				var t = sceneTime - sphere.bouncing_time;
+				var h = sphere.position.y;
+				h = sphere.H0 + (sphere.V0 * t) - (0.5 * ball_gravity * t * t);
+				//console.log("the sphere vf is " + sphere.H0);
+
+				if( h <=  4 * scale ) { // we would assume 5 is the ground!
+
+
+					sphere.bouncing_time = sceneTime;
+					sphere.V0 = sphere.VF * sphere.bounciness;
+					sphere.HF = (sphere.V0 * sphere.V0) / (2 * ball_gravity);
+					sphere.VF = Math.sqrt(2*ball_gravity*sphere.HF);
+					sphere.H0 = 4 * scale;
+					//console.log("the sphere vf is " + sphere.bounciness);
+					// sleepFor(10000);
+				} else  {
+					sphere.position.y = h;
+					//flag = -1;
+				}
+			//console.log("shpere y position is " + sphere.position.y);
 			/*
 			if (h <= 0) {
 				sphere.bouncing_time = sceneTime;
@@ -402,7 +487,7 @@ setTimeout(function() {
 			var selected_value = this.options[this.selectedIndex].text;
 			if(selected_value == "Moon") {
 				ball_gravity = 1/6 * ball_gravity;
-				sphere.H0 = height; // the default height!
+				sphere.H0 = 100; // the default height!
 				sphere.V0 = 0;
 				sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
 				sphere.HF = 0;
@@ -419,7 +504,7 @@ setTimeout(function() {
 				var bump_map = new THREE.TextureLoader().load('images/bump_map.jpg');
 				//var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide} );
 				floorMaterial = new THREE.MeshPhongMaterial( { map: diffuse_map, normalMap: normal_map, side: THREE.DoubleSide} );
-				floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
+				floorGeometry = new THREE.PlaneGeometry(600, 600, 8, 8);
 				plane = new THREE.Mesh(floorGeometry, floorMaterial);
 				plane.receiveShadow = true;
 				plane.position.y = -0.5;
@@ -427,9 +512,35 @@ setTimeout(function() {
 
 				scene.add(plane);
 
-				} else if (selected_value == "Earth") {
+				geo_skybox = new THREE.SphereGeometry( 500, 60, 40 );
+				geo_skybox.scale( - 1, 1, 1 );	
+				material_geoskybox = new THREE.MeshBasicMaterial( {
+					//map: new THREE.TextureLoader().load( 'images/some_sky.jpg' )
+					map: new THREE.TextureLoader().load( 'images/lens_sky.jpg' )
+				} );
+				mesh_skybox = new THREE.Mesh( geo_skybox, material_geoskybox );
+				scene.add( mesh_skybox);
+
+				scene.remove(spotlight);
+
+
+				//lightAmb = new THREE.AmbientLight(0x777777);
+				//lightAmb.intensity = 0.1;
+				//scene.add(lightAmb);
+				spotlight = new THREE.SpotLight( 0xFFFFFF );
+				spotlight.intensity = 1;
+				//spotlight.position.set(1000,1000,1000);
+				spotlight.castShadow = true;
+				spotlight.position.set(-100,400,30);
+				spotlight.shadowCameraNear = 1;
+				spotlight.decay = 2;
+				scene.add(spotlight);
+
+
+
+			} else if (selected_value == "Earth") {
 				ball_gravity = 9.8;
-				sphere.H0 = height; // the default height!
+				sphere.H0 = 100; // the default height!
 				sphere.V0 = 0;
 				sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
 				sphere.HF = 0;
@@ -443,13 +554,22 @@ setTimeout(function() {
 				var bump_map = new THREE.TextureLoader().load('images/bump_map.jpg');
 				//var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide} );
 				floorMaterial = new THREE.MeshPhongMaterial( { map: diffuse_map, normalMap: normal_map, side: THREE.DoubleSide} );
-				floorGeometry = new THREE.PlaneGeometry(300, 300, 8, 8);
+				floorGeometry = new THREE.PlaneGeometry(600, 600, 8, 8);
 				plane = new THREE.Mesh(floorGeometry, floorMaterial);
 				plane.receiveShadow = true;
 				plane.position.y = -0.5;
 				plane.rotation.x = Math.PI / 2;
 
 				scene.add(plane);
+
+				geo_skybox = new THREE.SphereGeometry( 500, 60, 40 );
+				geo_skybox.scale( - 1, 1, 1 );	
+				material_geoskybox = new THREE.MeshBasicMaterial( {
+					//map: new THREE.TextureLoader().load( 'images/some_sky.jpg' )
+					map: new THREE.TextureLoader().load( 'images/sky2.jpg' )
+				} );
+				mesh_skybox = new THREE.Mesh( geo_skybox, material_geoskybox );
+				scene.add( mesh_skybox);
 
 
 
@@ -460,37 +580,323 @@ setTimeout(function() {
 
 	</script>
 </body>
+<br>
 <SELECT ID="gravitySelect" NAME="graivtySelect" onchange="scheduleA.call(this, event)">
 	<OPTION ID="1" VALUE="TEST1" SELECTED> Earth </OPTION>
 	<OPTION ID="2" VALUE="TEST2"> Moon </OPTION>
 </SELECT>
 <br>
-<button id="button" onclick="myFunction()"> change gravity </button>
+
+<button id="button" onclick="myFunction()"> ANIMATE</button>
 <button id="button_pause" > pause </button>
 <br>
 <input type="range" name="slider" min="0" max="1" step="0.1" value="0" id="slider" >air resistance</input>
 <br>
-<input type="range" name="slider_size" min="0.1" max="1" step="0.1" value="0.1" id="slider_size"> size of the ball</input>
+<input type="range" name="slider_size" min="0.5" max="5" step="0.1" value="1" id="slider_size"> size of the ball</input>
 <script type="text/javascript">
 	// this is the place where you declare all the buttons all that so that you can access any variable!
-button.onclick = function() {
-	//sphere.rotation.x += 0.1;
-	// reinitializing some stuff
-	// var temp_h0 = sphere.position.y;
-	ball_gravity = 1/6 * ball_gravity;
-	sphere.H0 = 50; // the default height!
-	sphere.V0 = 0;
-	sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
-	sphere.HF = 0;
-	sphere.bouncing_time = 0;
-	sphere.bounciness = 1;
-	sceneTime = 0;
-	//scene.remove(sphere);
+	button.onclick = function() {
+
+	//scene.remove(mesh_text);
+	ball_gravity = 9.8;
+				sphere.H0 = 100; // the default height!
+				sphere.V0 = 0;
+				sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
+				sphere.HF = 0;
+				sphere.bouncing_time = 0;
+				sphere.bounciness = 1;
+				sceneTime = 0;
+				//sphere.set.scale(5,5,5);
+				sphere.scale.set(3,3,3);
+				scale = 3;
+				/*
+					First
+					*/
+					setTimeout(function() {
 
 
+						var loader = new THREE.FontLoader();
+
+						loader.load( 'fonts/droid_serif_regular.typeface.js', function ( font ) {
+							var text = "A free falling object is an object that is falling under the sole influence of gravity.";
+							var textGeo = new THREE.TextGeometry( text, {
+
+								font: font,
+
+								size: 12,
+								height: 3,
+								curveSegments: 12,
+
+								bevelThickness: 0.2,
+								bevelSize: 0.5,
+								bevelEnabled: true
+								/*
+								size: 200,
+								height: 50,
+								curveSegments: 12,
+
+								bevelThickness: 2,
+								bevelSize: 5,
+								bevelEnabled: true
+								*/
+
+							} );
+
+
+				//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
+				var textMaterial = new THREE.MeshPhongMaterial( 	{  color: 0x0000FF, shading: THREE.FlatShading } );
+
+
+				mesh_text = new THREE.Mesh( textGeo, textMaterial );
+				//mesh_text.position.set( -180, 50, 0 );
+				mesh_text.position.set( -320, 75, 25 );
+
+				mesh_text.castShadow = true;
+			//mesh_text.rotation.x = -Math.PI / 4;
+			scene.add( mesh_text );
+			pause_flag = false;
+
+
+		} );
+}, 0000);
+				/*
+					Second
+					*/
+
+					setTimeout(function() {
+						scene.remove(mesh_text);
+						var loader = new THREE.FontLoader();
+
+						loader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
+							var text = "All free-falling objects (on Earth) accelerate downwards at a rate of 9.8 m/s/s";
+							var textGeo = new THREE.TextGeometry( text, {
+
+								font: font,
+
+								size: 12,
+								height: 3,
+								curveSegments: 12,
+
+								bevelThickness: 0.2,
+								bevelSize: 0.5,
+								bevelEnabled: true
+
+							} );
+
+								//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
+								var textMaterial = new THREE.MeshPhongMaterial( 	{ color: 0xFF0000, shininess: 1, opacity: 1, wireframe: false } );
+
+
+								mesh_text = new THREE.Mesh( textGeo, textMaterial );
+								mesh_text.position.set( -320, 100, 20 );
+
+								mesh_text.castShadow = true;
+		//mesh_text.rotation.x = -Math.PI / 4;
+		scene.add( mesh_text );
+		pause_flag = false;
+
+
+	} );
+					}, 8000);
+
+				/*
+					Third
+					*/
+				//Free-falling objects do not encounter air resistance.
+				var mesh_text_2;
+				setTimeout(function() {
+					//scene.remove(mesh_text);
+					var loader = new THREE.FontLoader();
+
+					loader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
+						var text = "- Free-falling objects do not encounter air resistance";
+						var textGeo = new THREE.TextGeometry( text, {
+
+							font: font,
+
+							size: 12,
+							height: 3,
+							curveSegments: 12,
+
+							bevelThickness: 0.2,
+							bevelSize: 0.5,
+							bevelEnabled: true
+
+						} );
+
+								//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
+								var textMaterial = new THREE.MeshPhongMaterial( 	{ color: 0x0000FF, shininess: 1, opacity: 1, wireframe: false } );
+
+
+								mesh_text_2 = new THREE.Mesh( textGeo, textMaterial );
+								mesh_text_2.position.set( -320, 80, 20 );
+
+								mesh_text_2.castShadow = true;
+		//mesh_text.rotation.x = -Math.PI / 4;
+		scene.add( mesh_text_2 );
+		pause_flag = false;
+
+
+	} );
+				}, 12000);
+
+				/*
+					THIRD
+					*/
+
+					var mesh_text_3;
+					setTimeout(function() {
+						scene.remove(mesh_text);
+						scene.remove(mesh_text_2);
+						var loader = new THREE.FontLoader();
+
+						loader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
+							var text = "Initial acceleration at maximum height = 9.8m/s/s";
+							var textGeo = new THREE.TextGeometry( text, {
+
+								font: font,
+
+								size: 12,
+								height: 3,
+								curveSegments: 12,
+
+								bevelThickness: 0.2,
+								bevelSize: 0.5,
+								bevelEnabled: true
+
+							} );
+
+								//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
+								var textMaterial = new THREE.MeshPhongMaterial( 	{ color: 0x0000FF, shininess: 1, opacity: 1, wireframe: false } );
+
+
+								mesh_text_2 = new THREE.Mesh( textGeo, textMaterial );
+								mesh_text_2.position.set( -320, 80, 20 );
+
+								mesh_text_2.castShadow = true;
+		//mesh_text.rotation.x = -Math.PI / 4;
+		scene.add( mesh_text_2 );
+		//pause_flag = true;
+
+
+	} );
+					}, 16000);
+
+					/*
+						Middle
+						*/
+						setTimeout(function() {
+							pause_flag = true;
+						}, 20000);
+
+					/*
+						Fourth
+						*/
+						var mesh_text_4;
+						setTimeout(function() {
+							scene.remove(mesh_text);
+							scene.remove(mesh_text_2);
+							scene.remove(mesh_text_3);
+							var loader = new THREE.FontLoader();
+							pause_flag = false;
+
+							loader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
+								var text = "When the ball is at half it's distance, acceleration still remains the same, 9.8m/s/s";
+								var textGeo = new THREE.TextGeometry( text, {
+
+									font: font,
+
+									size: 12,
+									height: 3,
+									curveSegments: 12,
+
+									bevelThickness: 0.2,
+									bevelSize: 0.5,
+									bevelEnabled: true
+
+								} );
+
+								//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
+								var textMaterial = new THREE.MeshPhongMaterial( 	{ color: 0x228b22, shininess: 1, opacity: 1, wireframe: false } );
+
+
+								mesh_text_4 = new THREE.Mesh( textGeo, textMaterial );
+								mesh_text_4.position.set( -320, 80, 20 );
+
+								mesh_text_4.castShadow = true;
+		//mesh_text.rotation.x = -Math.PI / 4;
+		scene.add( mesh_text_4 );
+		
+
+
+	} );
+						}, 21500);
+
+			/*
+			GOING TO THE END
+			*/
+			setTimeout(function() {
+				pause_flag = true;
+			}, 24000);
+
+			var mesh_text_5;
+			setTimeout(function() {
+				pause_flag = false;
+				scene.remove(mesh_text);
+				scene.remove(mesh_text_2);
+				scene.remove(mesh_text_3);
+				scene.remove(mesh_text_4);
+				var loader = new THREE.FontLoader();
+				pause_flag = false;
+
+				loader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
+					var text = "Even just before the ball reaches the ground, its still has an downwards acceleration of 9.8m/s/s";
+					var textGeo = new THREE.TextGeometry( text, {
+
+						font: font,
+
+						size: 12,
+						height: 3,
+						curveSegments: 12,
+
+						bevelThickness: 0.2,
+						bevelSize: 0.5,
+						bevelEnabled: true
+
+					} );
+
+								//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
+								var textMaterial = new THREE.MeshPhongMaterial( 	{ color: 0xeb2d3a, shininess: 1, opacity: 1, wireframe: false } );
+
+
+								mesh_text_5 = new THREE.Mesh( textGeo, textMaterial );
+								mesh_text_5.position.set( -320, 80, 20 );
+
+								mesh_text_5.castShadow = true;
+		//mesh_text.rotation.x = -Math.PI / 4;
+		scene.add( mesh_text_5 );
+	} );
+				
+			}, 24700);
+
+
+
+
+
+//calling to resume
+setTimeout(function() {
+	scene.remove(mesh_text);
+	scene.remove(mesh_text_2);
+	scene.remove(mesh_text_3);
+	scene.remove(mesh_text_4);
+	scene.remove(mesh_text_5);
+	pause_flag = true;
+}, 35000);
 }
+
+
 slider.onchange = function() {   
-	sphere.H0 = height; // the default height!
+	sphere.H0 = 150; // the default height!
 	sphere.V0 = 0;
 	sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
 	sphere.HF = 0;
@@ -502,6 +908,12 @@ slider.onchange = function() {
 	// scene.remove(sphere);
 }
 slider_size.onchange = function() {
+	scale = this.value;
+	//if(this.value > 1.5) {
+	//	height = 200;
+	//}
+	def = 100;
+	height = def * this.value;
 	sphere.scale.set(this.value,this.value,this.value);
 }
 button_pause.onclick = function() {
