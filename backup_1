@@ -161,8 +161,6 @@ setTimeout(function() {
 	<script src="js/OrbitControls.js"></script>
 	<script src="js/THREEx.FullScreen.js"> </script>
 	<script src='js/threex.sportballs.js'></script>
-	<script src="js/ParticleEngine.js"></script>
-	<script src="js/ParticleEngineExamples.js"></script>
 	<script>
 		var camera;
 		var scene;
@@ -193,7 +191,6 @@ setTimeout(function() {
 		var scale = 1;
 		var mesh_text;
 		var counter = 0;
-		var sphere_2 = undefined;
 
 		init();
 		animate();
@@ -412,9 +409,7 @@ setTimeout(function() {
 		function render() {
 			// var h = sphere.position.y;
 			// h = this.H0 + (this.V0 * 2) - (0.5 * ball_gravity);
-			if(sphere_2 != null) {
-				updatePosition_sphere_2();
-			}
+
 			updatePosition();
 
 
@@ -423,48 +418,6 @@ setTimeout(function() {
 			renderer.render(scene,camera);  
 		}
 		var flag = 1;
-
-		function initialise_sphere_2() {
-			sphere_2.position.set(-50,150,0);
-			sphere_2.castShadow = true;
-
-			//SETTING UP THE initial attributes to calculate acceleration of a ball when it drops!
-			sphere_2.H0 = height; // the default height!
-			sphere_2.V0 = 0;
-			sphere_2.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
-			sphere_2.HF = 0;
-			sphere_2.bouncing_time = 0;
-			sphere_2.bounciness = 1;
-		}
-		function updatePosition_sphere_2() {
-			if( h <= 5) {
-				sphere_2.rotation.x = 0;
-				} else {
-				sphere_2.rotation.x += 0.05;
-			}
-
-			var t = sceneTime - sphere_2.bouncing_time;
-			var h = sphere_2.position.y;
-			h = sphere_2.H0 + (sphere_2.V0 * t) - (0.5 * ball_gravity * t * t);
-			//console.log("the sphere vf is " + sphere.H0);
-
-			if( h <=  4 * scale ) { // we would assume 5 is the ground!
-
-
-				sphere_2.bouncing_time = sceneTime;
-				sphere_2.V0 = sphere_2.VF * sphere_2.bounciness;
-				sphere_2.HF = (sphere_2.V0 * sphere_2.V0) / (2 * ball_gravity);
-				sphere_2.VF = Math.sqrt(2*ball_gravity*sphere_2.HF);
-				sphere_2.H0 = 4 * scale;
-				//console.log("the sphere vf is " + sphere.bounciness);
-				// sleepFor(10000);
-				} else  {
-				sphere_2.position.y = h;
-				//flag = -1;
-			}
-
-
-		}
 
 		function updatePosition() {
 			//console.log("position is " + sphere.position.y);
@@ -639,10 +592,8 @@ setTimeout(function() {
 	<OPTION ID="2" VALUE="TEST2"> Moon </OPTION>
 </SELECT>
 <br>
-<button id="button_changeball" onclick="changeBallFunction()">Change Ball</button>
-<button id="button" onclick="myFunction()"> LESSON 1</button>
-<button id="button_lesson2" onclick="lesson_two()"> LESSON 2</button>
-
+<button id="button_changeball" onclick="changeBallFunction()">changeball</button>
+<button id="button" onclick="myFunction()"> ANIMATE</button>
 <button id="button_pause" > pause </button>
 <br>
 <input type="range" name="slider" min="0" max="1" step="0.1" value="0" id="slider" >air resistance</input>
@@ -653,7 +604,7 @@ setTimeout(function() {
 		scene.remove(sphere);
 		counter++;
 
-		if (counter % 3 == 1) {
+		if (counter % 2 == 1) {
 			sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
 			sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 5, opacity: 1, wireframe: false } );
 			//sphere_material  = new THREE.MeshPhongMaterial( { map: ball_diffuse, normalMap: ball_normal} );
@@ -661,35 +612,6 @@ setTimeout(function() {
 			sphere = new THREE.Mesh(sphere_geometry,sphere_material);
 
 			//sphere.scale.set(5,5,5);
-
-			height = 100;
-			// sphere.scale.set(0.1,0.1,0.1); // setting the size of the ball
-			sphere.position.set(0,height,0);
-			sphere.castShadow = true;
-			//gravity_choice = document.getElementById('gravitySelect');
-
-
-			//SETTING UP THE initial attributes to calculate acceleration of a ball when it drops!
-			sphere.H0 = height; // the default height!
-			sphere.V0 = 0;
-			sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
-			sphere.HF = 0;
-			sphere.bouncing_time = 0;
-			sphere.bounciness = 1;
-			//END OF SETTING UP!
-
-			scene.add(sphere);
-		} else if(counter % 3 == 2) {
-			sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
-			//sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 3, opacity: 1, wireframe: false } );
-			var ball_normal = new THREE.TextureLoader().load( 'images/ball_normal.jpg' );
-			var ball_diffuse = new THREE.TextureLoader().load( 'images/ball_diffuse.jpg' );
-
-			sphere_material  = new THREE.MeshPhongMaterial( { map: ball_diffuse, normalMap: ball_normal} );
-
-			//sphere = new THREE.Mesh(sphere_geometry,sphere_material);
-			sphere = THREEx.SportBalls.createBeach();
-			sphere.scale.set(20,20,20);
 
 			height = 100;
 			// sphere.scale.set(0.1,0.1,0.1); // setting the size of the ball
@@ -708,8 +630,7 @@ setTimeout(function() {
 			//END OF SETTING UP!
 
 			scene.add(sphere);
-
-		} else {
+		} else  {
 			sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
 			//sphere_material  = new THREE.MeshPhongMaterial( { color: 0xff0000, specular: 0xFFFFFF, shininess: 3, opacity: 1, wireframe: false } );
 			var ball_normal = new THREE.TextureLoader().load( 'images/ball_normal.jpg' );
@@ -745,7 +666,7 @@ setTimeout(function() {
 // this is the place where you declare all the buttons all that so that you can access any variable!
 button.onclick = function() {
 	renderer.setSize( window.innerWidth , window.innerHeight);
-	camera.position.set(0,150,420);
+	camera.position.set(0,150,440);
 	//scene.remove(mesh_text);
 	ball_gravity = 9.8;
 	sphere.H0 = 100; // the default height!
@@ -848,7 +769,6 @@ bevelEnabled: true
 			} );
 }, 8000);
 
-
 /*
    Third
  */
@@ -890,50 +810,12 @@ bevelEnabled: true
 		} );
 }, 12000);
 
-var mesh_text_6
-setTimeout(function() {
-		scene.remove(mesh_text);
-		var loader = new THREE.FontLoader();
-
-		loader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
-			var text = "On the other hand, the free fall acceleration on the moon is 1/6th of the Earth's";
-			var textGeo = new THREE.TextGeometry( text, {
-
-font: font,
-
-size: 12,
-height: 3,
-curveSegments: 12,
-
-bevelThickness: 0.2,
-bevelSize: 0.5,
-bevelEnabled: true
-
-} );
-
-			//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
-			var textMaterial = new THREE.MeshPhongMaterial( 	{ color: 0x00FF00, shininess: 1, opacity: 1, wireframe: false } );
-
-
-			mesh_text_6 = new THREE.Mesh( textGeo, textMaterial );
-		mesh_text_6.position.set( -320, 60, 20 );
-
-		mesh_text_6.castShadow = true;
-		//mesh_text.rotation.x = -Math.PI / 4;
-		scene.add( mesh_text_6 );
-		pause_flag = false;
-
-
-		} );
-}, 16000);
-
 /*
    THIRD
  */
 
 var mesh_text_3;
 setTimeout(function() {
-		scene.remove(mesh_text_6);
 		scene.remove(mesh_text);
 		scene.remove(mesh_text_2);
 		var loader = new THREE.FontLoader();
@@ -968,14 +850,14 @@ bevelEnabled: true
 
 
 		} );
-}, 20000);
+}, 16000);
 
 /*
    Middle
  */
 setTimeout(function() {
 		pause_flag = true;
-		}, 24000);
+		}, 20000);
 
 /*
    Fourth
@@ -1018,14 +900,14 @@ bevelEnabled: true
 
 
 		} );
-}, 25500);
+}, 21500);
 
 /*
    GOING TO THE END
  */
 setTimeout(function() {
 		pause_flag = true;
-		}, 28000);
+		}, 24000);
 
 var mesh_text_5;
 setTimeout(function() {
@@ -1038,7 +920,7 @@ setTimeout(function() {
 		pause_flag = false;
 
 		loader.load( 'fonts/helvetiker_regular.typeface.js', function ( font ) {
-			var text = "Even just before the ball reaches the ground, it still has an downwards acceleration of 9.8m/s/s";
+			var text = "Even just before the ball reaches the ground, its still has an downwards acceleration of 9.8m/s/s";
 			var textGeo = new THREE.TextGeometry( text, {
 
 font: font,
@@ -1065,7 +947,7 @@ bevelEnabled: true
 		scene.add( mesh_text_5 );
 		} );
 
-}, 28700);
+}, 24700);
 
 
 
@@ -1081,7 +963,7 @@ setTimeout(function() {
 		pause_flag = true;
 		// goes out of full screen
 		renderer.setSize( 1000 , 500);
-		}, 39000);
+		}, 35000);
 }
 
 
@@ -1108,357 +990,6 @@ slider_size.onchange = function() {
 }
 button_pause.onclick = function() {
 	pause_flag = !pause_flag;
-}
-
-/*
-   Lessons two function
- */
-function lesson_two() {
-	//renderer.setSize( window.innerWidth , window.innerHeight);
-	scene.remove(sphere);
-	scene.remove(sphere_2);
-	pause_flag = false;
-
-	camera.position.set(0,150,420);
-
-
-	sphere_geometry = new THREE.SphereGeometry( 5, 30,28 );
-	var sphere_material_temp  = new THREE.MeshPhongMaterial( { color: 0xC0C0C0, specular: 0xC0C0C0, shininess: 5, opacity: 1, wireframe: false } );
-	//sphere_material  = new THREE.MeshPhongMaterial( { map: ball_diffuse, normalMap: ball_normal} );
-
-	sphere = new THREE.Mesh(sphere_geometry,sphere_material);
-
-
-	//sphere.scale.set(5,5,5);
-
-	//height = 100;
-	// sphere.scale.set(0.1,0.1,0.1); // setting the size of the ball
-	sphere.position.set(0,150,0);
-	sphere.castShadow = true;
-	//gravity_choice = document.getElementById('gravitySelect');
-
-
-	//SETTING UP THE initial attributes to calculate acceleration of a ball when it drops!
-	sphere.H0 = height; // the default height!
-	sphere.V0 = 0;
-	sphere.VF = Math.sqrt(2 * ball_gravity * sphere.H0);
-	sphere.HF = 0;
-	sphere.bouncing_time = 0;
-	sphere.bounciness = 1;
-	scene.add(sphere);
-
-
-
-	//sphere_material  = new THREE.MeshPhongMaterial( { map: ball_diffuse, normalMap: ball_normal} );
-
-
-	sphere_2 = new THREE.Mesh(sphere_geometry,sphere_material_temp);
-
-	//sphere_2.scale.set(5,5,5);
-
-	initialise_sphere_2();
-	scene.add(sphere_2);
-	//console.log("lessons 2");
-	setTimeout(function() {
-
-
-			var loader = new THREE.FontLoader();
-
-			loader.load( 'fonts/droid_serif_regular.typeface.js', function ( font ) {
-				var text = "Suppose 2 objects of different weights are initially dropped from the same height...";
-				var textGeo = new THREE.TextGeometry( text, {
-
-font: font,
-
-size: 12,
-height: 3,
-curveSegments: 12,
-
-bevelThickness: 0.2,
-bevelSize: 0.5,
-bevelEnabled: true
-
-} );
-
-
-				//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
-				var textMaterial = new THREE.MeshPhongMaterial( 	{  color: 0x0000FF, shading: THREE.FlatShading } );
-
-
-			mesh_text = new THREE.Mesh( textGeo, textMaterial );
-			//mesh_text.position.set( -180, 50, 0 );
-			mesh_text.position.set( -320, 75, 25 );
-
-			mesh_text.castShadow = true;
-			//mesh_text.rotation.x = -Math.PI / 4;
-			scene.add( mesh_text );
-
-
-
-
-
-			} );
-}, 0000);
-
-/*
-   some other statement
- */
-var text_temp;
-setTimeout(function() {
-
-
-		var loader = new THREE.FontLoader();
-
-		loader.load( 'fonts/droid_serif_regular.typeface.js', function ( font ) {
-			var text = "-On the left is a silver ball, on the right is a football which weights less";
-			var textGeo = new THREE.TextGeometry( text, {
-
-font: font,
-
-size: 10,
-height: 3,
-curveSegments: 12,
-
-bevelThickness: 0.2,
-bevelSize: 0.5,
-bevelEnabled: true
-
-} );
-
-
-			//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
-			var textMaterial = new THREE.MeshPhongMaterial( 	{  color: 0x00FF00, shading: THREE.FlatShading } );
-
-
-		text_temp = new THREE.Mesh( textGeo, textMaterial );
-		//mesh_text.position.set( -180, 50, 0 );
-		text_temp.position.set( -320, 50, 25 );
-
-		text_temp.castShadow = true;
-		//mesh_text.rotation.x = -Math.PI / 4;
-		scene.add( text_temp );
-
-
-
-
-
-		} );
-}, 6000);
-
-
-/*
-   Statement 2
- */
-var text_2;
-setTimeout(function() {
-		scene.remove(mesh_text);
-		scene.remove(text_temp);
-
-
-		var loader = new THREE.FontLoader();
-
-		loader.load( 'fonts/droid_serif_regular.typeface.js', function ( font ) {
-			var text = "Assuming there is no air resistance, which object will hit the ground first?";
-			var textGeo = new THREE.TextGeometry( text, {
-
-font: font,
-
-size: 12,
-height: 3,
-curveSegments: 12,
-
-bevelThickness: 0.2,
-bevelSize: 0.5,
-bevelEnabled: true
-
-} );
-
-
-			//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
-			var textMaterial = new THREE.MeshPhongMaterial( 	{  color: 0x00FFFF, shading: THREE.FlatShading } );
-
-
-		text_2 = new THREE.Mesh( textGeo, textMaterial );
-		//mesh_text.position.set( -180, 50, 0 );
-		text_2.position.set( -320, 75, 25 );
-
-		text_2.castShadow = true;
-		//mesh_text.rotation.x = -Math.PI / 4;
-		scene.add( text_2 );
-
-
-		} );
-}, 12000);
-
-
-/*
-   Make the ball fall
- */
-setTimeout(function() {
-		pause_flag = true;
-		},20000);
-
-setTimeout(function() {
-		pause_flag = false;
-		},22100);
-
-
-
-/*
-   Statement 4
- */
-
-var text_4;
-setTimeout(function() {
-		scene.remove(text_2);
-
-
-		var loader = new THREE.FontLoader();
-
-		loader.load( 'fonts/droid_serif_regular.typeface.js', function ( font ) {
-			var text = "Assuming there is no air resistance, which object will hit the ground first?";
-			var textGeo = new THREE.TextGeometry( text, {
-
-font: font,
-
-size: 12,
-height: 3,
-curveSegments: 12,
-
-bevelThickness: 0.2,
-bevelSize: 0.5,
-bevelEnabled: true
-
-} );
-
-
-			//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
-			var textMaterial = new THREE.MeshPhongMaterial( 	{  color: 0x00FFFF, shading: THREE.FlatShading } );
-
-
-		text_4 = new THREE.Mesh( textGeo, textMaterial );
-		//mesh_text.position.set( -180, 50, 0 );
-		text_4.position.set( -320, 75, 25 );
-
-		text_4.castShadow = true;
-		//mesh_text.rotation.x = -Math.PI / 4;
-		scene.add( text_4 );
-		pause_flag = false;
-
-
-		} );
-}, 23000);
-
-
-/*
-   Statement 3
- */
-
-var text_3
-setTimeout(function() {
-		// quickly stopped the ball from moving!
-		pause_flag = false;
-		scene.remove(text_4);
-
-		var loader = new THREE.FontLoader();
-
-		loader.load( 'fonts/droid_serif_regular.typeface.js', function ( font ) {
-			var text = "Both objects with different weights reaches the ground at the same time...";
-			var textGeo = new THREE.TextGeometry( text, {
-
-font: font,
-
-size: 12,
-height: 3,
-curveSegments: 12,
-
-bevelThickness: 0.2,
-bevelSize: 0.5,
-bevelEnabled: true
-
-} );
-
-
-			//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
-			var textMaterial = new THREE.MeshPhongMaterial( 	{  color: 0x00FFFF, shading: THREE.FlatShading } );
-
-
-		text_3 = new THREE.Mesh( textGeo, textMaterial );
-		//mesh_text.position.set( -180, 50, 0 );
-		text_3.position.set( -320, 75, 25 );
-
-		text_3.castShadow = true;
-		//mesh_text.rotation.x = -Math.PI / 4;
-		scene.add( text_3 );
-
-
-		} );
-},25000);
-
-
-
-/*
-   Statement 5
- */
-
-var text_5;
-setTimeout(function() {
-		// quickly stopped the ball from moving!
-		scene.remove(text_3);
-
-		var loader = new THREE.FontLoader();
-
-		loader.load( 'fonts/droid_serif_regular.typeface.js', function ( font ) {
-			var text = "This is because it is in a free fall motion...";
-			var textGeo = new THREE.TextGeometry( text, {
-
-font: font,
-
-size: 12,
-height: 3,
-curveSegments: 12,
-
-bevelThickness: 0.2,
-bevelSize: 0.5,
-bevelEnabled: true
-
-} );
-
-
-			//var textMaterial = new THREE.MeshPhongMaterial( { color: 0x0000FF } );
-			var textMaterial = new THREE.MeshPhongMaterial( 	{  color: 0xFF0000, shading: THREE.FlatShading } );
-
-
-		text_5 = new THREE.Mesh( textGeo, textMaterial );
-		//mesh_text.position.set( -180, 50, 0 );
-		text_5.position.set( -320, 75, 25 );
-
-		text_5.castShadow = true;
-		//mesh_text.rotation.x = -Math.PI / 4;
-		scene.add( text_5 );
-
-
-		} );
-},35000);
-
-
-
-
-/*
-   The end state for lesson 2
- */	
-setTimeout(function() {
-		scene.remove(text_5);
-		//scene.remove(text_6);
-		scene.remove(sphere_2);
-		pause_flag = true;
-		},42000);
-
-
-
-
-
-
 }
 
 </script>
